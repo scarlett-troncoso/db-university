@@ -30,6 +30,10 @@ LIKE '1993%';
 ## 4. Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)
 
 ----sql
+SELECT \*
+FROM `courses`
+WHERE `period` = 'I semestre'
+AND `year` = 1;
 
 ---
 
@@ -42,17 +46,27 @@ LIKE '1993%';
 ## 6. Selezionare tutti i corsi di laurea magistrale (38)
 
 ----sql
+SELECT \*
+FROM `degrees`
+WHERE `name`
+LIKE 'Corso di Laurea Magistrale%';
 
 ---
 
 ## 7. Da quanti dipartimenti è composta l'università? (12)
 
 ----sql
+SELECT COUNT(\*)
+FROM `departments`;
 
 ---
 
 ## 8. Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 
 ----sql
+SELECT \*
+FROM `teachers`
+WHERE `phone`
+IS NULL;
 
 ---
