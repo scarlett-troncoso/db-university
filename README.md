@@ -75,6 +75,12 @@ LIKE '14%'
 
 ---
 
+Altra opzione:
+SELECT \*
+FROM `exams`
+WHERE `date` = '2020-06-20'
+AND hour(`hour`) >= 14;
+
 ## 6. Selezionare tutti i corsi di laurea magistrale (38)
 
 ----sql
