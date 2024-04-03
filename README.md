@@ -22,8 +22,35 @@ WHERE `cfu` > 10;
 ----sql
 SELECT \*
 FROM `students`
-WHERE `date_of_birth`
-LIKE '1993%';
+WHERE TIMESTAMPDIFF(YEAR, date_of_birth, CURDATE()) > 30;
+
+↑↑↑// questa soluzione é giusta pero considera solo l'anno non i calcoli dei mesi
+
+---
+
+Altra opzione:
+SELECT \*
+FROM `students`
+WHERE DATEDIFF(NOW(), `date_of_birth`) / 365.25 > 30;
+
+↑↑↑// questa soluzione non é stata quella piú precisa
+
+---
+
+Altra opzione:
+SELECT \*
+FROM `students`
+WHERE YEAR(NOW()) - YEAR(date_of_birth) > 30;
+
+↑↑↑// questa soluzione non é tanto precisa
+
+---
+
+SELECT \*
+FROM `students`
+WHERE YEAR(date_of_birth) < 1994;
+
+↑↑↑// questa soluzione non va bene perche il prossimo anno 2025 non funzionera piu, abbiamo bisogno un funzione che calcoli gli anni da sola e cosi funzioni tutti gli anni.
 
 ---
 
